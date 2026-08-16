@@ -8,3 +8,7 @@ credentials/
 *.token.json
 service-account*.json
 .env
+.dev.vars
+
+# Wrangler local dev state
+.wrangler/
