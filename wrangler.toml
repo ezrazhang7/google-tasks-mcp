@@ -1,0 +1,13 @@
+# Cloudflare Workers deployment for the remote (custom connector) build.
+# Secrets are NOT stored here — set them with `wrangler secret put <NAME>`:
+#   MCP_BEARER_TOKEN              shared secret Claude sends on every request
+#   GOOGLE_OAUTH_CLIENT_ID        from Google Cloud Console
+#   GOOGLE_OAUTH_CLIENT_SECRET    from Google Cloud Console
+#   GOOGLE_REFRESH_TOKEN          from `npm run mint-token`
+
+name = "google-tasks-mcp"
+main = "src/worker.ts"
+compatibility_date = "2026-08-01"
+
+# Workers' built-in fetch and WebCrypto cover everything the server needs,
+# so no nodejs_compat flag is required.

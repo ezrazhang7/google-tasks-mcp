@@ -1,0 +1,58 @@
+{
+  "$schema": "./node_modules/@anthropic-ai/mcpb/schemas/mcpb-manifest-v0.4.schema.json",
+  "manifest_version": "0.4",
+  "name": "google-tasks-mcp",
+  "display_name": "Google Tasks",
+  "version": "0.1.0",
+  "description": "Manage Google Tasks in place: list, create (single or bulk), update, complete, move, and delete tasks and lists. Due dates show as all-day items on Google Calendar.",
+  "author": {
+    "name": "Ezra Zhang"
+  },
+  "license": "MIT",
+  "keywords": [
+    "google-tasks",
+    "tasks",
+    "todo",
+    "calendar",
+    "mcp"
+  ],
+  "server": {
+    "type": "node",
+    "entry_point": "dist/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/dist/index.js"
+      ],
+      "env": {
+        "GOOGLE_OAUTH_CLIENT_ID": "${user_config.oauth_client_id}",
+        "GOOGLE_OAUTH_CLIENT_SECRET": "${user_config.oauth_client_secret}"
+      }
+    }
+  },
+  "user_config": {
+    "oauth_client_id": {
+      "type": "string",
+      "title": "Google OAuth Client ID",
+      "description": "OAuth 2.0 Desktop client ID from Google Cloud Console (APIs & Services > Credentials). Ends in .apps.googleusercontent.com",
+      "required": true
+    },
+    "oauth_client_secret": {
+      "type": "string",
+      "title": "Google OAuth Client Secret",
+      "description": "OAuth 2.0 Desktop client secret paired with the client ID above.",
+      "sensitive": true,
+      "required": true
+    }
+  },
+  "compatibility": {
+    "platforms": [
+      "darwin",
+      "win32",
+      "linux"
+    ],
+    "runtimes": {
+      "node": ">=20"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.mcpb
+*.tsbuildinfo
+
+# Local credentials — never commit
+credentials/
+*.token.json
+service-account*.json
+.env

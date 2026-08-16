@@ -1,0 +1,23 @@
+# Bundle only what the server needs at runtime.
+#
+# node_modules is filtered with the gitignore "exclude contents, re-include
+# specific entries" idiom: `/node_modules/*` excludes each entry individually
+# (not the parent directory), which is what makes the `!` negations below
+# work. Excluding `/node_modules/` outright would make them impossible.
+#
+# The negations must NOT end in "/": mcpb prunes ignored directories during
+# its walk, so a directory-only pattern never matches the entry being pruned
+# and the re-include silently fails (shipping a bundle with no dependencies).
+#
+# Runtime deps are only @modelcontextprotocol/server (+ its @…/core) and zod;
+# everything else here is dev-only (typescript, wrangler, mcpb CLI).
+/node_modules/*
+!/node_modules/@modelcontextprotocol
+!/node_modules/zod
+
+# Source and dev config — dist/ is what actually runs.
+/src/
+/tsconfig.json
+/wrangler.toml
+/RESEARCH.md
+/google-tasks.mcpb

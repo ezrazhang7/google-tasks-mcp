@@ -1,0 +1,44 @@
+{
+  "name": "google-tasks-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for Google Tasks: list, create (bulk), update, complete, move, and delete tasks and task lists \u2014 all-day due dates that show on Google Calendar",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "dev": "tsc --watch",
+    "pack": "npm run build && mcpb pack . google-tasks.mcpb",
+    "mint-token": "npm run build && node dist/node/mintToken.js",
+    "deploy": "wrangler deploy",
+    "dev:worker": "wrangler dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ezrazhang7/google-tasks-mcp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ezrazhang7/google-tasks-mcp/issues"
+  },
+  "homepage": "https://github.com/ezrazhang7/google-tasks-mcp#readme",
+  "type": "module",
+  "bin": {
+    "google-tasks-mcp": "dist/index.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "^2.0.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@anthropic-ai/mcpb": "^2.1.2",
+    "@types/node": "^26.2.0",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.120.0"
+  }
+}
